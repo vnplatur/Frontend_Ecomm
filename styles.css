@@ -62,7 +62,9 @@ h1, h2, h3, p {
 
 /* Hero Section Styles */
 .hero {
-  background-color: #ff6347;
+/*   background-color: #ff6347; */
+  background-image: url(./arrangement-black-friday-shopping-carts-with-copy-space.jpg);
+  background-size: cover;
   color: #fff;
   padding: 4em 0;
   text-align: center;
