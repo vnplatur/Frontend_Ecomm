@@ -587,34 +587,80 @@ button[type="submit"]:hover {
   }
 }
 
+/* Media Queries for Responsive Design */
+
 /* Adjusting grid columns for mobile devices */
 @media (max-width: 480px) {
   .grid {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
   /* Testimonials Section */
   .testimonials .grid {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
   /* Product Features Comparison Table */
   .comparison-table-wrapper {
-      overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
-      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   }
 
-  .comparison-table table {
-      width: 100%;
-      table-layout: auto;
+  .comparison-table {
+    display: block; /* Make the table a block element */
+    width: 100%; /* Ensure the table takes full width */
+    border-collapse: collapse; /* Collapse borders between cells */
   }
 
-  .comparison-table th,
+  .comparison-table thead {
+    display: none; /* Hide the table header on very small screens */
+  }
+
+  .comparison-table tbody,
+  .comparison-table tr {
+    display: block; /* Make tbody and rows block elements */
+    margin-bottom: 1em; /* Space between rows */
+  }
+
   .comparison-table td {
-      padding: 8px;
-      text-align: left;
+    display: block; /* Make each cell a block element */
+    text-align: right; /* Align text to the right */
+    padding: 0.5em; /* Adjust padding for readability */
+    position: relative; /* Positioning for labels */
+    border-bottom: 1px solid #ddd; /* Add bottom border for separation */
+    width: 100%; /* Ensure cell takes full width */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+  }
+
+  .comparison-table td::before {
+    content: attr(data-label); /* Use data-label for the cell label */
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 0.5em;
+    font-weight: bold;
+    text-align: left;
+    top: 0;
+    white-space: nowrap; /* Prevent label from wrapping */
+    background-color: #f9f9f9; /* Background color for better visibility */
+  }
+
+  /* Hide the Features column */
+  .comparison-table .feature-col {
+    display: none; /* Hide the Features column on small screens */
+  }
+
+  /* Adjust table rows to ensure all columns fit */
+  .comparison-table td:not(.feature-col) {
+    display: block; /* Ensure remaining cells stack vertically */
+    width: 100%; /* Ensure cell takes full width */
+  }
+
+  .comparison-table td:not(.feature-col)::before {
+    display: none; /* Hide data-label for non-feature columns */
   }
 }
+
 
 /* Keyframes for flash animation */
 @keyframes flash {
